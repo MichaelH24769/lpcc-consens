@@ -1,3 +1,4 @@
+HEAD
 # LP-CC Consent
 
 Schlankes, wiederverwendbares Cookie-Consent-Plugin für WordPress mit Geo-Split.
@@ -65,3 +66,4 @@ Alles über CSS-Variablen (`--lpcc-bg`, `--lpcc-fg`, `--lpcc-accent`, `--lpcc-ac
 ## Lizenz Dritter
 
 `lib/MaxMind/` — MaxMind-DB-Reader-php, Apache-2.0 (siehe `lib/MaxMind/LICENSE`).
+ac2211d024ece14d6b5002c28b879e8ebdff1d6e
