@@ -46,14 +46,7 @@ function lpcc_sanitize_settings( $input ): array {
 	// Neuer/erstmaliger Key => GeoDB sofort laden (nicht auf Cron warten)
 	$old_key = $old['maxmind_key'] ?? '';
 	if ( '' !== $clean['maxmind_key'] && $clean['maxmind_key'] !== $old_key ) {
-		add_action( 'shutdown', function () {
-			$result = lpcc_download_geodb();
-			if ( is_wp_error( $result ) ) {
-				update_option( 'lpcc_geodb_error', $result->get_error_message(), false );
-			} else {
-				delete_option( 'lpcc_geodb_error' );
-			}
-		} );
+		add_action( 'shutdown', 'lpcc_run_geodb_update' );
 	}
 
 	return $clean;
