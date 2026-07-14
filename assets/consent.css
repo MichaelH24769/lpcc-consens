@@ -1,0 +1,151 @@
+/**
+ * LP-CC Consent – Styles
+ *
+ * Alle Farben/Fonts über CSS-Variablen mit neutralen Defaults.
+ * Theme-Anpassung (Beispiel dreamvilla) im eigenen style.css:
+ *
+ *   :root {
+ *     --lpcc-bg: var(--c-ink);
+ *     --lpcc-fg: #fff;
+ *     --lpcc-accent: var(--c-gold);
+ *     --lpcc-font: inherit;
+ *   }
+ */
+
+.lpcc-banner {
+	position: fixed;
+	inset-inline: 0;
+	bottom: 0;
+	z-index: 99999;
+	background: var(--lpcc-bg, #1c1c1e);
+	color: var(--lpcc-fg, #fff);
+	font-family: var(--lpcc-font, inherit);
+	font-size: 15px;
+	line-height: 1.5;
+	box-shadow: 0 -4px 24px rgba(0, 0, 0, .25);
+}
+
+.lpcc-banner__inner {
+	max-width: var(--lpcc-maxwidth, 960px);
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.lpcc-banner__title {
+	margin: 0 0 6px;
+	font-size: 17px;
+	font-weight: 600;
+}
+
+.lpcc-banner__text {
+	margin: 0 0 14px;
+	opacity: .9;
+}
+
+.lpcc-banner__text a {
+	color: var(--lpcc-accent, #e8b04b);
+	text-decoration: underline;
+}
+
+/* Kategorien */
+
+.lpcc-prefs {
+	display: grid;
+	gap: 10px;
+	margin: 0 0 14px;
+}
+
+.lpcc-cat {
+	display: flex;
+	gap: 10px;
+	align-items: flex-start;
+	cursor: pointer;
+}
+
+.lpcc-cat input {
+	margin-top: 3px;
+	accent-color: var(--lpcc-accent, #e8b04b);
+}
+
+.lpcc-cat small {
+	display: block;
+	opacity: .75;
+}
+
+/* Buttons */
+
+.lpcc-banner__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.lpcc-btn {
+	padding: 10px 18px;
+	border: 1px solid var(--lpcc-fg, #fff);
+	border-radius: var(--lpcc-radius, 4px);
+	background: transparent;
+	color: var(--lpcc-fg, #fff);
+	font: inherit;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.lpcc-btn--primary {
+	background: var(--lpcc-accent, #e8b04b);
+	border-color: var(--lpcc-accent, #e8b04b);
+	color: var(--lpcc-accent-fg, #1c1c1e);
+	font-weight: 600;
+}
+
+.lpcc-btn--ghost {
+	border-color: transparent;
+	text-decoration: underline;
+	opacity: .85;
+}
+
+.lpcc-btn:hover {
+	opacity: .85;
+}
+
+/* 2-Klick-Embed-Platzhalter */
+
+.lpcc-embed {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	padding: 24px;
+	background: var(--lpcc-embed-bg, #f2f2f2);
+	color: var(--lpcc-embed-fg, #333);
+	border: 1px dashed var(--lpcc-embed-border, #bbb);
+	border-radius: var(--lpcc-radius, 4px);
+	text-align: center;
+	font-size: 14px;
+}
+
+.lpcc-embed .lpcc-btn--primary {
+	color: var(--lpcc-accent-fg, #1c1c1e);
+}
+
+.lpcc-embed__note {
+	margin: 0;
+	max-width: 480px;
+	opacity: .8;
+}
+
+.lpcc-embed__always {
+	font-size: 13px;
+	opacity: .7;
+	cursor: pointer;
+}
+
+@media (max-width: 600px) {
+	.lpcc-banner__inner {
+		padding: 16px;
+	}
+	.lpcc-banner__actions .lpcc-btn {
+		flex: 1 1 auto;
+	}
+}
