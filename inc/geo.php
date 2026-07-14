@@ -101,7 +101,20 @@ function lpcc_lookup_country( string $ip ): ?string {
 // GEODB-DOWNLOAD (Cron + manuell nach Settings-Save)
 // ============================================================================
 
-add_action( 'lpcc_geodb_update', 'lpcc_download_geodb' );
+add_action( 'lpcc_geodb_update', 'lpcc_run_geodb_update' );
+
+/**
+ * Wrapper um lpcc_download_geodb(): Ergebnis in Options loggen, damit
+ * Fehler (auch beim automatischen Cron-Update) auf der Settings-Seite sichtbar sind.
+ */
+function lpcc_run_geodb_update(): void {
+	$result = lpcc_download_geodb();
+	if ( is_wp_error( $result ) ) {
+		update_option( 'lpcc_geodb_error', $result->get_error_message(), false );
+	} else {
+		delete_option( 'lpcc_geodb_error' );
+	}
+}
 
 /**
  * GeoLite2-Country.mmdb von MaxMind laden und nach uploads entpacken.
