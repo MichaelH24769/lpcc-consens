@@ -128,6 +128,13 @@ function lpcc_download_geodb() {
 		return new WP_Error( 'lpcc_no_key', 'Kein MaxMind License Key hinterlegt.' );
 	}
 
+	// Manche Hosts deaktivieren die phar-Extension (u. a. wegen früherer
+	// Deserialisierungs-CVEs) - ohne sie würde das Entpacken weiter unten
+	// mit einem Fatal Error abbrechen statt eines sauberen WP_Error.
+	if ( ! class_exists( 'PharData' ) ) {
+		return new WP_Error( 'lpcc_no_phar', 'PHP-Erweiterung "phar" ist auf diesem Server nicht verfügbar.' );
+	}
+
 	if ( ! function_exists( 'download_url' ) ) {
 		require_once ABSPATH . 'wp-admin/includes/file.php';
 	}
